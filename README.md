@@ -1,6 +1,6 @@
 # Calculadora Web
 
-Calculadora desenvolvida como projeto acadêmico para aplicar os conhecimentos adquiridos ao longo do semestre em desenvolvimento web.
+Calculadora desenvolvida como um projeto pessoal/acadêmico para aplicar os conhecimentos adquiridos ao longo do semestre da faculdade em desenvolvimento web.
 
 A aplicação permite realizar operações aritméticas por meio de uma interface com botões e um visor para exibir as expressões e os resultados.
 
