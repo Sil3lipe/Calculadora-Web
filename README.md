@@ -46,3 +46,7 @@ nova_calculadora/
 - Acesso e atualização de elementos do DOM com JavaScript.
 - Uso de funções e eventos de clique.
 - Tratamento de exceções com `try...catch`.
+
+## Vídeo demonstrativo
+
+https://github.com/user-attachments/assets/d9b0876f-d238-4e74-a112-be1d099887fb
