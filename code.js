@@ -8,8 +8,13 @@ function appendToDisplay(input){
         display.value = "0";
     }
 
-    // Se o visor for "0" e o usuário digitar um número (0 a 9), substitui o "0"
-    if (display.value === "0" && /^[0-9]$/.test(input)) {
+    // Impede fechar parênteses ")" logo no início quando o visor ainda é "0"
+    if (display.value === "0" && input === ")") {
+        return;
+    }
+
+    // Se o visor for "0" e o usuário digitar um número (0 a 9) ou "(", substitui o "0"
+    if (display.value === "0" && /^[0-9(]$/.test(input)) {
         display.value = input;
     } else {
         display.value += input;
@@ -22,7 +27,13 @@ function clearDisplay(){
 
 function calculate(){
     try{
-        display.value = eval(display.value);
+        // Permite multiplicação implícita com parênteses: ex. 2(3+4) vira 2*(3+4)
+        const expression = display.value
+            .replace(/(\d)\(/g, "$1*(")
+            .replace(/\)(\d)/g, ")*$1")
+            .replace(/\)\(/g, ")*(");
+
+        display.value = eval(expression);
     }
     catch(error){
         display.value = "Error";
@@ -32,8 +43,8 @@ function calculate(){
 document.addEventListener("keydown", function(event) {
     const key = event.key;
 
-    // 1. Números (0 a 9), operadores (+, -, *, /) e ponto decimal
-    if (/^[0-9+\-*/.]$/.test(key)) {
+    // 1. Números (0 a 9), operadores (+, -, *, /), ponto decimal e parênteses
+    if (/^[0-9+\-*/.()]$/.test(key)) {
         appendToDisplay(key);
     }
     // 2. Caso o usuário aperte vírgula no teclado numérico, converte para ponto
